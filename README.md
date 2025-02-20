@@ -17,25 +17,28 @@ This script is a utility to extract libraries such as binaries, services and oth
 - Extracts binaries files from `vendor/bin/hw` related to `keymaster`, `gatekeeper`, or `keymint`.
 - Extracts service files from `vendor/bin` related to `mcRegistry`, `teei_daemon`, or `teed`.
 - Extracts files from the following paths if they exist:
-  - `vendor/app/mcRegistry`
-  - `vendor/thh/ta`
-  - `vendor/mitee/ta`
-  - `vendor/app/t6`
+  - vendor/
+    - `app/mcRegistry`
+    - `app/t6`
+    - `mitee/ta`
+    - `thh/ta`
 - Handles extraction for:
-  - `system/lib64`
-  - `system/lib64/hw`
-  - `system/etc`
-  - `system/etc/vintf`
-  - `system/etc/vintf/manifest`
-  - `system_ext/lib64`
-  - `system_ext/lib64/hw`
-  - `vendor/lib64`
-  - `vendor/lib64/hw`
-  - `vendor/bin/hw`
-  - `vendor/bin`
-  - `vendor/firmware`
-  - `vendor/etc/vintf`
-  - `vendor/etc/vintf/manifest`
+  - `system/`
+    - `lib64/hw`
+    - `etc/`
+       - `vintf`
+       - `manifest`
+  - `system_ext/`
+    - `lib64/`
+      - `hw`
+  - `vendor/`
+    - `bin/`
+      - `hw`
+    - `etc/vintf`
+      - `manifest`
+    - `firmware`
+    - `lib64/`
+      - `hw`
 - Cleans up **empty directories** after extraction, including automatically checking if `system_ext` and/or `vendor/app` is empty and deleting it.
 
 ---
@@ -94,22 +97,22 @@ Before using this script, ensure:
 
 After extraction, the sorted files are automatically copied into the following appropriate directories:
 
+- **`./system/etc/`**: Extracted event-log-tags & task_profiles.json files.
+- **`./system/etc/vintf/manifest.xml`**: Extracted manifest file.
 - **`./system/lib64/`**: System libraries extracted.
 - **`./system/lib64/hw/`**: Extracted hardware libraries.
-- **`./system/etc/vintf/manifest.xml`**: Extracted manifest file.
-- **`./system/etc/`**: Extracted event-log-tags & task_profiles.json files.
 - **`./system_ext/lib64/`**: System extension libraries extracted.
 - **`./system_ext/lib64/hw/`**: Extracted hardware system extension libraries.
+- **`./vendor/app/mcRegistry/`**: Extracted if it exists.
+- **`./vendor/app/t6/`**: Extracted if it exists.
+- **`./vendor/bin/`**: Extracted `mcRegistry`, `teei_daemon`, `teed` or service, production-line, tee clients and ca files.
+- **`./vendor/bin/hw/`**: Extracted `keymaster`, `gatekeeper`, `keymint`, and other relevant binaries files.
+- **`./vendor/etc/vintf/manifest.xml`**: Extracted manifest file.
+- **`./vendor/firmware/`**: Vendor binaries extracted.
+- **`./vendor/mitee/ta/`**: Extracted if it exists.
 - **`./vendor/lib64/`**: Vendor libraries extracted.
 - **`./vendor/lib64/hw/`**: Extracted vendor hardware libraries.
-- **`./vendor/bin/hw/`**: Extracted `keymaster`, `gatekeeper`, `keymint`, and other relevant binaries files.
-- **`./vendor/bin/`**: Extracted `mcRegistry`, `teei_daemon`, `teed` or service, production-line, tee clients and ca files.
-- **`./vendor/firmware/`**: Vendor binaries extracted.
-- **`./vendor/etc/vintf/manifest.xml`**: Extracted manifest file.
-- **`./vendor/app/mcRegistry/`**: Extracted if it exists.
 - **`./vendor/thh/ta/`**: Extracted if it exists.
-- **`./vendor/mitee/ta/`**: Extracted if it exists.
-- **`./vendor/app/t6/`**: Extracted if it exists.
 
 ---
 
@@ -153,8 +156,7 @@ Step | happening |   | Step | happening
 4-| Answer the question |  | 9-| Skipping the folders&files not finded
 5-| The script is starting |  | 10-| Script completion advise
 
-   ![ExACriB](https://github.com/user-attachments/assets/680b0e77-1d2f-48db-add7-c558f06824db)
-
+![ExACriB_resized](https://github.com/user-attachments/assets/a8197e8d-dcd5-410c-b642-e3b5caaa49aa)
 </p>
 </details>
 
