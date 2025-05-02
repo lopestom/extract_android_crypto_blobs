@@ -100,7 +100,7 @@ echo "Using ROM dump directory: $ROM_DUMP_DIR"
 echo "Searching for libraries, binaries, mcRegistry, thh/ta files, mcDriverDaemon, teei_daemon, teed, and .rc files in this path..."
 
 # Search for .rc files and copy them to the current directory
-find "$ROM_DUMP_DIR" -type f \( -name "microtrust.rc" -o -name "trustonic.rc" -o -name "tee.rc" -o -name "trustkernel.rc" \) | while read -r rc_file; do
+find "$ROM_DUMP_DIR" -type f \( -name "microtrust.rc" -o -name "*trustonic*.rc" -o -name "tee.rc" -o -name "*trustkernel*.rc" -o -name "*gatekeeper*.rc" -o -name "*beanpod*.rc" -o -name "*attestation*.rc" \) | while read -r rc_file; do
     echo "Found .rc file: $rc_file"
     echo "Copying to current directory"
     cp -v "$rc_file" ./
@@ -451,3 +451,6 @@ clear
 echo -e "${GREEN}===   Extraction and cleanup completed.   ===${RESET}"
 
 sleep 2
+
+exit
+#exit 1
